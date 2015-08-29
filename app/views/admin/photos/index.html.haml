@@ -1,0 +1,21 @@
+.page-header
+  = link_to 'New Photo', new_admin_photo_path, :class => 'btn btn-default pull-right'
+  %h2= 'Photos'
+
+= paginate @photos, :theme => 'comfy'
+
+%table.table.table-hover.table-bordered
+  %tr
+    %th.main Title
+    %th Description
+    %th
+  - @photos.each do |photo|
+    %tr
+      %td.main= photo.title
+      %td= photo.description
+      %td
+        .btn-group.btn-group-sm
+          = link_to 'Edit', edit_admin_photo_path(photo), :class => 'btn btn-default'
+          = link_to 'Delete', admin_photo_path(photo), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
+
+= paginate @photos, :theme => 'comfy'
