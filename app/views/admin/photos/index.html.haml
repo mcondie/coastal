@@ -8,11 +8,18 @@
   %tr
     %th.main Title
     %th Description
+    %th Category
+    %th Image
     %th
   - @photos.each do |photo|
     %tr
       %td.main= photo.title
       %td= photo.description
+      - if photo.category != nil
+        %td= photo.category.name
+      - else
+        %td
+      %td= image_tag photo.image.url(:thumb)
       %td
         .btn-group.btn-group-sm
           = link_to 'Edit', edit_admin_photo_path(photo), :class => 'btn btn-default'

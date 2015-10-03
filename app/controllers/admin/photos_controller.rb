@@ -16,8 +16,11 @@ class Admin::PhotosController < Comfy::Admin::Cms::BaseController
   end
 
   def edit
+    @category = Category.new
     render
   end
+
+
 
   def create
     @photo.save!
@@ -57,6 +60,6 @@ protected
   end
 
   def photo_params
-    params.fetch(:photo, {}).permit(:title, :description)
+    params.fetch(:photo, {}).permit(:title, :description, :image, :category_id)
   end
 end

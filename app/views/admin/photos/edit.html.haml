@@ -1,5 +1,5 @@
 .page-header
   %h2 Edit Photo
 
-= comfy_form_for [:admin, @photo] do |form|
+= comfy_form_for [:admin, @photo], :html => { :multipart => true } do |form|
   = render form

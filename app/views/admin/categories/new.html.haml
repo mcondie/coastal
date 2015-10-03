@@ -1,0 +1,5 @@
+.page-header
+  %h2 New Category
+
+= comfy_form_for [:admin, @category], :html => { :multipart => true } do |form|
+  = render form

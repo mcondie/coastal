@@ -2,3 +2,16 @@
   %h2 Photo
   
 = link_to 'Edit', edit_admin_photo_path(@photo), :class => 'btn btn-default'
+
+%table
+  %tr
+    %td
+      %label Title
+    %td 
+      = @photo.title
+
+  %tr
+    %td
+      %label Image
+    %td
+      = image_tag @photo.image.url(:thumb)

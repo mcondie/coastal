@@ -1,0 +1,30 @@
+.page-header
+  = link_to 'New Category', new_admin_category_path, :class => 'btn btn-default pull-right'
+  %h2= 'Categories'
+
+= paginate @categories, :theme => 'comfy'
+
+%table.table.table-hover.table-bordered
+  %tr
+    %th.main Name
+    %th Key
+    %th Description
+    %th Parent
+    %th Image
+    %th
+  - @categories.each do |category|
+    %tr
+      %td.main= category.name
+      %td= category.key
+      %td= category.description
+      - if category.parent
+        %td= category.parent.name
+      - else
+        %td
+      %td= image_tag category.image.url(:thumb)
+      %td
+        .btn-group.btn-group-sm
+          = link_to 'Edit', edit_admin_category_path(category), :class => 'btn btn-default'
+          = link_to 'Delete', admin_category_path(category), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
+
+= paginate @categories, :theme => 'comfy'

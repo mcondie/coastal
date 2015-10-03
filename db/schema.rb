@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829160631) do
+ActiveRecord::Schema.define(version: 20150919193601) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "description",        limit: 255
+    t.integer  "parent_id",          limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.string   "key",                limit: 255
+  end
+
+  create_table "categories_photos", force: :cascade do |t|
+    t.integer  "category_id", limit: 4
+    t.integer  "photo_id",    limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "categories_photos", ["category_id"], name: "index_categories_photos_on_category_id", using: :btree
+  add_index "categories_photos", ["photo_id"], name: "index_categories_photos_on_photo_id", using: :btree
 
   create_table "comfy_cms_blocks", force: :cascade do |t|
     t.string   "identifier",     limit: 255,      null: false
@@ -141,6 +164,9 @@ ActiveRecord::Schema.define(version: 20150829160631) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id",        limit: 4
   end
 
+  add_foreign_key "categories_photos", "categories"
+  add_foreign_key "categories_photos", "photos"
 end

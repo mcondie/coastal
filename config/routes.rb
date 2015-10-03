@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :categories
+  end
+
+  namespace :admin do
     resources :photos
   end
+
+  post 'links' => 'hierarchy#add', as: :add_category
+  post 'links/:id' => 'hierarchy#delete'
 
   comfy_route :cms_admin, :path => '/admin'
 

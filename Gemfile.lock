@@ -107,6 +107,9 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kramdown (1.8.0)
     libv8 (3.16.14.7)
     loofah (2.0.3)
@@ -210,6 +213,7 @@ DEPENDENCIES
   comfortable_mexican_sofa (~> 1.12.0)
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mysql2
   rails (= 4.2.1)
   sass-rails (~> 5.0)

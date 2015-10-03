@@ -43,5 +43,6 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'kaminari'
 
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
