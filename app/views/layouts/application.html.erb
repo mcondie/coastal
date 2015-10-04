@@ -1,14 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bact</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Coastal Cabinets</title>
+  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/css/slick.css" />
+		<link rel="stylesheet" href="/css/foundation.css" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 </head>
-<body>
+<body class="home blog">
+		
+	<div class="off-canvas-wrap" data-offcanvas>
+	<div class="inner-wrap">
+	
+		
+
+	<div class="container">
+    <div class="row">
+        <!--<h1 id="main-title"><a href="http://coastal.branch13.com">Coastal</a></h1>-->
+        <a href="http://coastal.branch13.com"><img width="300" src="http://coastal.branch13.com/wp-content/themes/coastal/assets/cci-logo.jpg" /></a>
+    </div>
+</div>
+<div class="top-bar-container contain-to-grid">
+    <nav class="top-bar" data-topbar role="navigation">
+        <!--<ul class="title-area">
+            <li class="name">
+                <h1><a href="http://coastal.branch13.com">Coastal</a></h1>
+            </li>
+        </ul>-->
+        <section class="top-bar-section">
+            <ul id="menu-main-1" class="top-bar-menu left">
+            	<li class="has-dropdown not-click">
+            		<a href="/portfolio" class>Portfolio</a>
+            	
+            		<ul class="dropdown">
+            			<% @categories.each do |cat| %>
+            	 <li>
+            	<%= link_to cat.name, controller: "home", action: "category", id: cat %>
+            	</li>
+            	<% end %>
+            		</ul>
+            	</li>
+            	
+</ul>                    </section>
+    </nav>
+</div>
 
 <%= yield %>
+
+
+<script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/foundation.js'></script>
+<script type="text/javascript" src="/js/slick.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	if($('.slides')){
+		$('.slides').slick({
+			dots: true,
+			infinite: true,
+			speed: 300,
+			slidesToShow: 1,
+			adaptiveHeight: true,
+			prevArrow: '<button type="button" class="slick-prev-icon show-for-medium-up"><i class="fa fa-chevron-left"></i></button>',
+			nextArrow: '<button type="button" class="slick-next-icon show-for-medium-up"><i class="fa fa-chevron-right"></i></button>'
+		});
+	}
+});
+</script>
 
 </body>
 </html>

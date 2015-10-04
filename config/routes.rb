@@ -8,13 +8,18 @@ Rails.application.routes.draw do
     resources :photos
   end
 
+  root 'home#index'
+
+  get 'category/:id' => 'home#category', as: :show_category
+  get 'portfolio' => 'home#portfolio'
+
   post 'links' => 'hierarchy#add', as: :add_category
   post 'links/:id' => 'hierarchy#delete'
 
   comfy_route :cms_admin, :path => '/admin'
 
   # Make sure this routeset is defined last
-  comfy_route :cms, :path => '/', :sitemap => false
+  comfy_route :cms, :path => '/pages', :sitemap => false
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
