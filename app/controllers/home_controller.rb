@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
 	def index
+		@photos = Photo.where("homepage = true")
 		render
 	end
 
@@ -8,6 +9,10 @@ class HomeController < ApplicationController
 	end
 
 	def portfolio
+		@categories = Category.all
+	end
 
+	def photo
+		@photo = Photo.find(params[:id])
 	end
 end

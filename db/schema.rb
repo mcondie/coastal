@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919193601) do
+ActiveRecord::Schema.define(version: 20151010164330) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 20150919193601) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id",        limit: 4
+    t.boolean  "homepage",           limit: 1
   end
 
   add_foreign_key "categories_photos", "categories"

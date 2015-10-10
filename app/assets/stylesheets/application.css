@@ -21,3 +21,24 @@
 .category-name{
 
 }
+
+.photo-header{
+	background: #eee;
+}
+.photo-header h2{
+	color: #359683;
+}
+.category-grid{
+	margin-top: 20px;
+}
+.category-grid li{
+	padding: 10px;
+}
+.frame-box{
+	border: 1px solid #888;
+	padding: 5px;
+	text-align: center;
+}
+.category-grid li a h5 {
+	color: #359683;
+}

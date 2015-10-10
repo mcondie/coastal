@@ -10,6 +10,7 @@
     %th Description
     %th Category
     %th Image
+    %th Show on Homepage
     %th
   - @photos.each do |photo|
     %tr
@@ -20,6 +21,11 @@
       - else
         %td
       %td= image_tag photo.image.url(:thumb)
+      %td
+        -if photo.homepage
+          = 'Yes'
+        -else
+          = 'No'
       %td
         .btn-group.btn-group-sm
           = link_to 'Edit', edit_admin_photo_path(photo), :class => 'btn btn-default'

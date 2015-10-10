@@ -2,6 +2,7 @@
 = form.text_field :description
 = form.file_field :image
 = form.collection_select :category_id, Category.all, :id, :name, prompt: true, include_blank: true
+= form.check_box :homepage, :label => 'Show on Homepage'
 
 = form.form_group :class => 'form-actions' do
   = form.submit :class => 'btn btn-primary'

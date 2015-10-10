@@ -5,3 +5,26 @@
 		</div>
 	</div>
 </div>
+
+<section class="container" role="document">
+	<div class="row fullWidth">
+		<div class="small-12 large-12 columns noPadding" role="main">
+
+			<div class="slides">
+				<% @category.photos.each do |photo| %>
+				<div class="image-post">
+					<article >
+						<figure>
+							<a href="/photo/<%= photo.id %>"><%= image_tag photo.image.url %>
+							</a>
+						</figure>
+						<h2 class="image-title"><a href="/photo/<%= photo.id %>"><%= photo.title %></a></h2>
+					</article>
+				</div>
+				<% end %>		
+			</div>
+
+		</div>
+
+	</div>
+</section>

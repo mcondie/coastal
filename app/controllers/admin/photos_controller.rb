@@ -60,6 +60,6 @@ protected
   end
 
   def photo_params
-    params.fetch(:photo, {}).permit(:title, :description, :image, :category_id)
+    params.fetch(:photo, {}).permit(:title, :description, :image, :category_id, :homepage)
   end
 end

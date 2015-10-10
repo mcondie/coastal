@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'category/:id' => 'home#category', as: :show_category
   get 'portfolio' => 'home#portfolio'
+  get 'photo/:id' => 'home#photo'
 
   post 'links' => 'hierarchy#add', as: :add_category
   post 'links/:id' => 'hierarchy#delete'

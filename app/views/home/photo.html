@@ -1,0 +1,28 @@
+<section class="container photo-header" role="document">
+	<div class="row">
+		<div class="small-12 columns ">
+			<h2><%= @photo.title %></h2>
+			<h5><%= @photo.description %></h5>
+		</div>
+</div>
+</section>
+<section class="container" role="document">
+	<div class="row fullWidth">
+		<div class="small-12 large-12 columns noPadding" role="main">
+
+			<div class="slides">
+				<div class="image-post">
+					<article >
+						<figure>
+							<a href="<%= @photo.image.url %>"><%= image_tag @photo.image.url %>
+							</a>
+						</figure>
+
+						</article>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>

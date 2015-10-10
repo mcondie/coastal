@@ -27,7 +27,7 @@
 	<div class="container">
     <div class="row">
         <!--<h1 id="main-title"><a href="http://coastal.branch13.com">Coastal</a></h1>-->
-        <a href="http://coastal.branch13.com"><img width="300" src="http://coastal.branch13.com/wp-content/themes/coastal/assets/cci-logo.jpg" /></a>
+        <a href="/"><img width="300" src="/images/cci-logo.jpg" /></a>
     </div>
 </div>
 <div class="top-bar-container contain-to-grid">
@@ -39,17 +39,27 @@
         </ul>-->
         <section class="top-bar-section">
             <ul id="menu-main-1" class="top-bar-menu left">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/pages/company">Company</a>
+                </li>
             	<li class="has-dropdown not-click">
             		<a href="/portfolio" class>Portfolio</a>
             	
             		<ul class="dropdown">
             			<% @categories.each do |cat| %>
             	 <li>
-            	<%= link_to cat.name, controller: "home", action: "category", id: cat %>
+                    <a href="/category/<%= cat.id %>"><%= cat.name %></a>
+            	
             	</li>
             	<% end %>
             		</ul>
             	</li>
+                <li>
+                    <a href="/pages/contact">Contact</a>
+                </li>
             	
 </ul>                    </section>
     </nav>
