@@ -3,7 +3,7 @@
 <head>
   <title>Coastal Cabinets</title>
   
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
   <meta charset="utf-8" />
@@ -15,7 +15,7 @@
 		
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= stylesheet_link_tag    'application', media: 'all' %>
 </head>
 <body class="home blog">
 		
@@ -78,6 +78,7 @@
 <script type="text/javascript" src="/js/slick.js"></script>
 <script type="text/javascript">
 var paused = false;
+var intervalId = null;
 $(document).ready(function(){
 	if($('.slides')){
 		$('.slides').slick({
