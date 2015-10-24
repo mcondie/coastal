@@ -42,3 +42,38 @@
 .category-grid li a h5 {
 	color: #359683;
 }
+	
+.logo-row{
+	text-align: center;
+}
+
+.dumb-footer{
+	position: fixed;
+	width: 100vw;
+	height: 80px;
+	text-align: center;
+	background: white;
+	bottom: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.main-content{
+	padding-bottom: 100px;
+}
+
+.control-container{
+	position: relative;
+}
+
+.play-pause{
+	display: inline-block;
+	position: relative;
+}
+
+.play-pause i{
+	position: absolute;
+	top: -8px;
+	cursor: pointer;
+	left: 6px;
+}

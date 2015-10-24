@@ -25,9 +25,9 @@
 		
 
 	<div class="container">
-    <div class="row">
+    <div class="row logo-row">
         <!--<h1 id="main-title"><a href="http://coastal.branch13.com">Coastal</a></h1>-->
-        <a href="/"><img width="300" src="/images/cci-logo.jpg" /></a>
+        <a href="/"><img width="500" src="/images/cci-logo.jpg" /></a>
     </div>
 </div>
 <div class="top-bar-container contain-to-grid">
@@ -64,14 +64,20 @@
 </ul>                    </section>
     </nav>
 </div>
-
+<div class="main-content">
 <%= yield %>
+</div>
+
+<div class="dumb-footer">
+    <a href="/"><img width="300" src="/images/cci-logo.jpg" /></a>
+    </div>
 
 
 <script type='text/javascript' src='/js/jquery.js'></script>
 <script type='text/javascript' src='/js/foundation.js'></script>
 <script type="text/javascript" src="/js/slick.js"></script>
 <script type="text/javascript">
+var paused = false;
 $(document).ready(function(){
 	if($('.slides')){
 		$('.slides').slick({
@@ -80,9 +86,37 @@ $(document).ready(function(){
 			speed: 300,
 			slidesToShow: 1,
 			adaptiveHeight: true,
+            autoplay: false,
+            
 			prevArrow: '<button type="button" class="slick-prev-icon show-for-medium-up"><i class="fa fa-chevron-left"></i></button>',
 			nextArrow: '<button type="button" class="slick-next-icon show-for-medium-up"><i class="fa fa-chevron-right"></i></button>'
 		});
+        setInterval(function(){
+            if(!paused){
+                $('.slides').slickNext();
+            }
+        }, 2000)
+        $('.slick-dots').append('<div class="play-pause"><i class="fa fa-pause"></i></div>');
+        function manualNav(){
+            paused = true;
+            $('.play-pause i').removeClass('fa-pause');
+            $('.play-pause i').addClass('fa-play');
+        }
+        $('.slick-prev-icon').click(manualNav);
+        $('.slick-next-icon').click(manualNav);
+        $('.play-pause i').click(function(){
+            if(!paused){
+                $('.slides').slickPause();
+                $('.play-pause i').removeClass('fa-pause');
+                $('.play-pause i').addClass('fa-play');
+            }
+            else{
+                $('.slides').slickPlay();
+                $('.play-pause i').removeClass('fa-play');
+                $('.play-pause i').addClass('fa-pause');
+            }
+            paused = !paused;
+        });
 	}
 });
 </script>
