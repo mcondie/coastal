@@ -7,5 +7,6 @@ class ApplicationController < ActionController::Base
 
   def set_menu
   	@categories = Category.all
+  	@pages = Photo.all
   end
 end

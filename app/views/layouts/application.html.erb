@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="coastalApp">
 <head>
   <title>Coastal Cabinets</title>
   
@@ -7,119 +7,180 @@
   <%= csrf_meta_tags %>
 
   <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/css/slick.css" />
-		<link rel="stylesheet" href="/css/foundation.css" />
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/slick.css" />
+  <link rel="stylesheet" href="/css/foundation.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-		
-		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 
-		<%= stylesheet_link_tag    'application', media: 'all' %>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+
+  <script type="text/javascript" src="/js/angular.min.js"></script>
+
+  <script>
+  var coastalApp = angular.module('coastalApp', []);
+  </script>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
 </head>
 <body class="home blog">
-		
-	<div class="off-canvas-wrap" data-offcanvas>
-	<div class="inner-wrap">
-	
-		
 
-	<div class="container">
-    <div class="row logo-row">
+	<div class="off-canvas-wrap" data-offcanvas>
+   <div class="inner-wrap">
+
+
+
+     <div class="container">
+      <div class="row logo-row">
         <!--<h1 id="main-title"><a href="http://coastal.branch13.com">Coastal</a></h1>-->
         <a href="/"><img width="500" src="/images/cci-logo.jpg" /></a>
+      </div>
     </div>
-</div>
-<div class="top-bar-container contain-to-grid">
-    <nav class="top-bar" data-topbar role="navigation">
+    <div class="top-bar-container contain-to-grid">
+      <nav class="top-bar" data-topbar role="navigation">
         <!--<ul class="title-area">
             <li class="name">
                 <h1><a href="http://coastal.branch13.com">Coastal</a></h1>
             </li>
-        </ul>-->
-        <section class="top-bar-section">
+          </ul>-->
+          <section class="top-bar-section">
             <ul id="menu-main-1" class="top-bar-menu left">
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/pages/company">Company</a>
-                </li>
-            	<li class="has-dropdown not-click">
-            		<a href="/portfolio" class>Portfolio</a>
-            	
-            		<ul class="dropdown">
-            			<% @categories.each do |cat| %>
-            	 <li>
-                    <a href="/category/<%= cat.id %>"><%= cat.name %></a>
-            	
-            	</li>
-            	<% end %>
-            		</ul>
-            	</li>
-                <li>
-                    <a href="/pages/contact">Contact</a>
-                </li>
-            	
-</ul>                    </section>
-    </nav>
-</div>
-<div class="main-content">
-<%= yield %>
-</div>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/pages/company">Company</a>
+              </li>
+              <li class="has-dropdown not-click">
+                <a href="/portfolio" class>Portfolio</a>
 
-<div class="dumb-footer">
-    <a href="/"><img width="300" src="/images/cci-logo.jpg" /></a>
+                <ul class="dropdown">
+                 <% @categories.each do |cat| %>
+                 <li>
+                  <a href="/category/<%= cat.id %>"><%= cat.name %></a>
+
+                </li>
+                <% end %>
+              </ul>
+            </li>
+            <li>
+              <a href="/pages/contact">Contact</a>
+            </li>
+
+          </ul>                    
+        </section>
+      </nav>
     </div>
+    <div class="search-box" ng-controller="searchCtrl">
+     <div class="large-12 small-12 columns">
+      <input type="text" placeholder="Search" ng-model="searchTerm">
+
+    </div>
+    
+    <ul class="search-results" ng-class="{visible: searchTerm.length > 0}">
+      <li ng-repeat="page in pages | searchFilter:searchTerm">
+        <a ng-href="/photo/{{page.id}}">
+        <div>
+        <img ng-src="{{page.image}}" height="67" width="100"/>
+      </div>
+      <div class="search-text">
+        <span class="search-title">{{page.title}}</span>
+        <br>
+        <span class="search-description">{{page.description}}</span>
+      </div>
+    </a>
+      </li>
+    </ul>
+  </div>
+  <div class="main-content">
+    <%= yield %>
+  </div>
+
+  <div class="dumb-footer">
+    <a href="/"><img width="300" src="/images/cci-logo.jpg" /></a>
+  </div>
 
 
-<script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/foundation.js'></script>
-<script type="text/javascript" src="/js/slick.js"></script>
-<script type="text/javascript">
-var paused = false;
-var intervalId = null;
-$(document).ready(function(){
-	if($('.slides')){
-		$('.slides').slick({
-			dots: true,
-			infinite: true,
-			speed: 300,
-			slidesToShow: 1,
-			adaptiveHeight: true,
-            autoplay: false,
-            
-			prevArrow: '<button type="button" class="slick-prev-icon show-for-medium-up"><i class="fa fa-chevron-left"></i></button>',
-			nextArrow: '<button type="button" class="slick-next-icon show-for-medium-up"><i class="fa fa-chevron-right"></i></button>'
-		});
-        setInterval(function(){
-            if(!paused){
-                $('.slides').slickNext();
-            }
-        }, 2000)
-        $('.slick-dots').append('<div class="play-pause"><i class="fa fa-pause"></i></div>');
-        function manualNav(){
-            paused = true;
-            $('.play-pause i').removeClass('fa-pause');
-            $('.play-pause i').addClass('fa-play');
-        }
-        $('.slick-prev-icon').click(manualNav);
-        $('.slick-next-icon').click(manualNav);
-        $('.play-pause i').click(function(){
-            if(!paused){
-                $('.slides').slickPause();
-                $('.play-pause i').removeClass('fa-pause');
-                $('.play-pause i').addClass('fa-play');
-            }
-            else{
-                $('.slides').slickPlay();
-                $('.play-pause i').removeClass('fa-play');
-                $('.play-pause i').addClass('fa-pause');
-            }
-            paused = !paused;
-        });
-	}
+  <script type='text/javascript' src='/js/jquery.js'></script>
+  <script type='text/javascript' src='/js/foundation.js'></script>
+  <script type="text/javascript" src="/js/slick.js"></script>
+  <script type="text/javascript">
+  var paused = false;
+  var intervalId = null;
+  $(document).ready(function(){
+   if($('.slides')){
+    $('.slides').slick({
+     dots: true,
+     infinite: true,
+     speed: 300,
+     slidesToShow: 1,
+     adaptiveHeight: true,
+     autoplay: false,
+
+     prevArrow: '<button type="button" class="slick-prev-icon show-for-medium-up"><i class="fa fa-chevron-left"></i></button>',
+     nextArrow: '<button type="button" class="slick-next-icon show-for-medium-up"><i class="fa fa-chevron-right"></i></button>'
+   });
+    setInterval(function(){
+      if(!paused){
+        $('.slides').slickNext();
+      }
+    }, 2000)
+    $('.slick-dots').append('<div class="play-pause"><i class="fa fa-pause"></i></div>');
+    function manualNav(){
+      paused = true;
+      $('.play-pause i').removeClass('fa-pause');
+      $('.play-pause i').addClass('fa-play');
+    }
+    $('.slick-prev-icon').click(manualNav);
+    $('.slick-next-icon').click(manualNav);
+    $('.play-pause i').click(function(){
+      if(!paused){
+        $('.slides').slickPause();
+        $('.play-pause i').removeClass('fa-pause');
+        $('.play-pause i').addClass('fa-play');
+      }
+      else{
+        $('.slides').slickPlay();
+        $('.play-pause i').removeClass('fa-play');
+        $('.play-pause i').addClass('fa-pause');
+      }
+      paused = !paused;
+    });
+  }
 });
+</script>
+
+
+<script>
+
+coastalApp.controller('searchCtrl', function($scope){
+  $scope.pages = [
+    <% @pages.each do |page| %>
+      {
+        title: '<%= page.title %>',
+        description: '<%= page.description %>',
+        id: <%= page.id %>,
+        image: '<%= page.image.url(:thumb) %>'
+      },
+    <% end %>
+  ];
+  $scope.searchTerm = "";
+});
+
+coastalApp.filter('searchFilter', function(){
+  return function(pages, term){
+    if(term.length == 0){
+      return [];
+    }
+    var out = [];
+    pages.forEach(function(page){
+      if(page.description.toLowerCase().indexOf(term.toLowerCase()) != -1 || page.title.toLowerCase().indexOf(term.toLowerCase()) != -1){
+        out.push(page);
+      }
+    });
+    return out;
+  }
+})
 </script>
 
 </body>

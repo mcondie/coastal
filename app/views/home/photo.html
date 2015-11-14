@@ -1,11 +1,11 @@
-<section class="container photo-header" role="document">
+<!-- <section class="container photo-header" role="document">
 	<div class="row">
 		<div class="small-12 columns ">
 			<h2><%= @photo.title %></h2>
 			<h5><%= @photo.description %></h5>
 		</div>
 </div>
-</section>
+</section> -->
 <section class="container" role="document">
 	<div class="row fullWidth">
 		<div class="small-12 large-12 columns noPadding" role="main">
@@ -14,15 +14,25 @@
 				<div class="image-post">
 					<article >
 						<figure>
-							<a href="<%= @photo.image.url %>"><%= image_tag @photo.image.url %>
-							</a>
+							<%= image_tag @photo.image.url %>
+							
 						</figure>
-
-						</article>
-					</div>
+						<div class="hover-desc" ng-controller="photoCtrl">
+							<h2 ng-mouseover="showDesc = true;" ng-mouseleave="showDesc = false" class="hover-title"><%= @photo.title %></h2>
+							<h5 class="hover-description" ng-hide="!showDesc"><%= @photo.description %></h5>
+						</div>
+					</article>
 				</div>
-
 			</div>
 
 		</div>
-	</section>
+
+	</div>
+</section>
+
+
+<script>
+coastalApp.controller('photoCtrl', function($scope){
+	$scope.showDesc = false;
+});
+</script>
