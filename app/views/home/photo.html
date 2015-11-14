@@ -18,7 +18,7 @@
 							
 						</figure>
 						<div class="hover-desc" ng-controller="photoCtrl">
-							<h2 ng-mouseover="showDesc = true;" ng-mouseleave="showDesc = false" class="hover-title"><%= @photo.title %></h2>
+							<h2 ng-mouseover="showDesc = true;" ng-mouseleave="showDesc = false" class="hover-title"><%= @photo.title %> <i class="fa fa-tag"></i></h2>
 							<h5 class="hover-description" ng-hide="!showDesc"><%= @photo.description %></h5>
 						</div>
 					</article>
