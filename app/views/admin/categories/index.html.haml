@@ -7,20 +7,20 @@
 %table.table.table-hover.table-bordered
   %tr
     %th.main Name
-    %th Key
+    / %th Key
     %th Description
-    %th Parent
+    / %th Parent
     %th Image
     %th
   - @categories.each do |category|
     %tr
       %td.main= category.name
-      %td= category.key
+      / %td= category.key
       %td= category.description
-      - if category.parent
-        %td= category.parent.name
-      - else
-        %td
+      / - if category.parent
+      /   %td= category.parent.name
+      / - else
+      /   %td
       %td= image_tag category.image.url(:thumb)
       %td
         .btn-group.btn-group-sm

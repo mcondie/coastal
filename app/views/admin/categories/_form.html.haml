@@ -1,7 +1,7 @@
 = form.text_field :name
-= form.text_field :key
+/ = form.text_field :key
 = form.text_field :description
-= form.collection_select :parent_id, Category.all, :id, :name, prompt: true, include_blank: true
+/ = form.collection_select :parent_id, Category.all, :id, :name, prompt: true, include_blank: true
 = form.file_field :image
 
 = form.form_group :class => 'form-actions' do

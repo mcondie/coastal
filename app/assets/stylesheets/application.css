@@ -113,11 +113,13 @@
 	list-style: none;
 	height: 80px;
 	background: white;
-
+	overflow: hidden;
+	position: relative;
 }
 
 .search-results li div{
 	display: inline-block;
+
 }
 
 .search-title{
@@ -129,7 +131,12 @@
 }
 
 .search-text{
-	overflow: none;
+    height: 80px;
+    overflow-y: hidden;
+    width: 156px;
+    position: absolute;
+    left: 106px;
+    top: 0px;
 }
 
 .hover-desc{
