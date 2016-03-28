@@ -36,7 +36,7 @@ class ContactsController < ApplicationController
     #   end
     # end
 
-    CommentMailer.comment_email(@contact.email, @contact.subject, @contact.message)
+    CommentMailer.comment_email(@contact.email, @contact.subject, @contact.message).deliver
     redirect_to '/pages/contact'
   end
 
