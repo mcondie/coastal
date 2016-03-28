@@ -171,3 +171,11 @@
 }
 
 
+#photos-comp .slick-next:before, #photos-comp .slick-prev:before{
+	color: #359683;
+}
+
+.contact-container{
+	max-width: 800px;
+	margin: 0 auto;
+}
