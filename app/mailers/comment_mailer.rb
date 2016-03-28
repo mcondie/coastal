@@ -5,6 +5,6 @@ class CommentMailer < ApplicationMailer
 	def comment_email(email, subject, message)
 		@message = message
 		@email = email
-		mail(cc: email, subject: subject)
+		mail(to: 'matthew.condie@gmail.com', from: 'comments@coastal.branch13.com', cc: email, subject: subject)
 	end
 end
