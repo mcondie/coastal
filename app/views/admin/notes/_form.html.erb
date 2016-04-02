@@ -1,0 +1,35 @@
+<div class="notes-image">
+	<div class="note-dot"></div>
+	<%= image_tag  @photo.image.url() %>
+</div>
+
+<%= form.text_field :name %>
+<%= form.text_field :description %>
+
+<%= form.hidden_field :x %>
+<%= form.hidden_field :y %>
+
+<%= form.form_group :class => 'form-actions' do %>
+	<%= form.submit :class => 'btn btn-primary' %>
+<% end %>
+
+<script>
+	var image = $('.notes-image img');
+	var container = $('.notes-image');
+	var dot = $('.note-dot');
+	var y = <%= @note.y %>;
+	var left = <%= @note.x %>;
+	setDot();
+
+	image.click(function(event){
+		y = event.offsetY / image.height();
+		left = event.offsetX / image.width();
+		setDot();
+	});
+
+	function setDot(){
+		$('#note_x').val(left);
+		$('#note_y').val(y);
+		dot.css({top: y * image.height(), left: left * image.width()});
+	}
+</script>

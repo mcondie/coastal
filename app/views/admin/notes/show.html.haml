@@ -1,0 +1,18 @@
+.page-header
+  %h2 Note
+  
+= link_to 'Edit', edit_admin_photo_note_path(@photo, @note), :class => 'btn btn-default'
+= link_to 'Go back to Notes List', admin_photo_notes_path(@photo), :class => 'btn btn-default'
+
+%table
+  %tr
+    %td
+      %label Title
+    %td 
+      = @note.name
+
+  %tr
+    %td
+      %label Description
+    %td
+      = @note.description

@@ -1,0 +1,18 @@
+.page-header
+  = link_to 'New Note', new_admin_photo_note_path, :class => 'btn btn-default pull-right'
+  %h2= 'Notes'
+  %h3= @photo.title
+
+%table.table.table-hover.table-bordered
+  %tr
+    %th.main Name
+    %th Description
+    %th
+  - @notes.each do |note|
+    %tr
+      %td.main= note.name
+      %td= note.description
+      %td
+        .btn-group.btn-group-sm
+          = link_to 'Edit', edit_admin_photo_note_path(@photo, note), :class => 'btn btn-default'
+          = link_to 'Delete', admin_photo_note_path(@photo, note), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
