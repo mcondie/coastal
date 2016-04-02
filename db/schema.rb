@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151114193530) do
+ActiveRecord::Schema.define(version: 20160402202349) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255
@@ -154,6 +154,16 @@ ActiveRecord::Schema.define(version: 20151114193530) do
 
   add_index "comfy_cms_snippets", ["site_id", "identifier"], name: "index_comfy_cms_snippets_on_site_id_and_identifier", unique: true, using: :btree
   add_index "comfy_cms_snippets", ["site_id", "position"], name: "index_comfy_cms_snippets_on_site_id_and_position", using: :btree
+
+  create_table "notes", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "photo_id",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "x",           limit: 65535
+    t.text     "y",           limit: 65535
+  end
 
   create_table "photos", force: :cascade do |t|
     t.string   "title",              limit: 255

@@ -142,8 +142,11 @@
 
 .hover-desc{
 	position: absolute;
-	top: 40vh;
-	left: 20vw;
+	
+}
+
+.hover-desc i {
+	color: #359683;
 }
 
 .hover-title{
@@ -152,24 +155,24 @@
 		padding-left: 20px;
 		padding-right: 64px;
 		cursor: pointer;
+		display: none;
 }
 
 .hover-title i{
 	font-size: 16px;
-	position: absolute;
-	right: 8px;
-	top: 23px;
 }
 
 .hover-description{
 	position: absolute;
-	top: 51px;
-	left: 0px;
 	width: 40vw;
 	background: white;
 	padding: 12px;
+	display: none;
 }
 
+.hover-desc.active .hover-description, .hover-desc.active .hover-title {
+	display: block;
+}
 
 #photos-comp .slick-next:before, #photos-comp .slick-prev:before{
 	color: #359683;
@@ -178,4 +181,13 @@
 .contact-container{
 	max-width: 800px;
 	margin: 0 auto;
+}
+
+
+table td {
+	max-width: 50px;
+}
+
+.image-post figure{
+	position: relative;
 }

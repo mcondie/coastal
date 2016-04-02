@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :photos
+    resources :photos do
+      resources :notes
+    end
   end
 
   root 'home#index'

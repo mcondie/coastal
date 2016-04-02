@@ -177,7 +177,8 @@ coastalApp.controller('searchCtrl', function($scope){
         title: '<%= page.title %>',
         description: '<%= page.description %>',
         id: <%= page.id %>,
-        image: '<%= page.image.url(:thumb) %>'
+        image: '<%= page.image.url(:thumb) %>',
+        notes: '<%= page.noteField %>'
       },
     <% end %>
   ];
@@ -191,7 +192,7 @@ coastalApp.filter('searchFilter', function(){
     }
     var out = [];
     pages.forEach(function(page){
-      if(page.description.toLowerCase().indexOf(term.toLowerCase()) != -1 || page.title.toLowerCase().indexOf(term.toLowerCase()) != -1){
+      if(page.description.toLowerCase().indexOf(term.toLowerCase()) != -1 || page.title.toLowerCase().indexOf(term.toLowerCase()) != -1 || page.notes.toLowerCase().indexOf(term.toLowerCase()) != -1){
         out.push(page);
       }
     });

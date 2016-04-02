@@ -8,5 +8,11 @@ class ApplicationController < ActionController::Base
   def set_menu
   	@categories = Category.all
   	@pages = Photo.all
+  	@pages.each do |page|
+  		page.noteField = ''
+  		page.notes.each do |note|
+  			page.noteField = page.noteField + ' ' + note.description + ' ' + note.name
+  		end
+  	end
   end
 end

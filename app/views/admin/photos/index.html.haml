@@ -7,6 +7,7 @@
 %table.table.table-hover.table-bordered
   %tr
     %th.main Title
+    %th Notes
     %th Description
     %th Category
     %th Image
@@ -15,7 +16,8 @@
   - @photos.each do |photo|
     %tr
       %td.main= photo.title
-      %td= photo.description
+      %td= active_link_to 'Notes', admin_photo_notes_path(photo.id)
+      %td= photo.description.truncate(50)
       - if photo.category != nil
         %td= photo.category.name
       - else
@@ -32,3 +34,5 @@
           = link_to 'Delete', admin_photo_path(photo), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
 
 = paginate @photos, :theme => 'comfy'
+
+admin_photo_notes

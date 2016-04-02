@@ -17,10 +17,6 @@
 							<%= image_tag @photo.image.url %>
 							
 						</figure>
-						<div class="hover-desc" ng-controller="photoCtrl">
-							<h2 ng-mouseover="showDesc = true;" ng-mouseleave="showDesc = false" class="hover-title"><%= @photo.title %> <i class="fa fa-tag"></i></h2>
-							<h5 class="hover-description" ng-hide="!showDesc"><%= @photo.description %></h5>
-						</div>
 					</article>
 				</div>
 			</div>
@@ -32,7 +28,25 @@
 
 
 <script>
-coastalApp.controller('photoCtrl', function($scope){
-	$scope.showDesc = false;
-});
+var figure = $('.image-post figure');
+var image = $('.image-post figure img');
+var row;
+window.setTimeout(function() {
+	<% @photo.notes.each do |note| %>
+
+	row = $('<div id="note_<%= note.id %>" class="hover-desc"><i class="fa fa-tag"></i><h4 class="hover-title"><%= note.name %> </h4> <h5 class="hover-description" ><%= note.description %></h5></div>');
+	row.css({top: <%= note.y %> * image.height(), left: <%= note.x %> * image.width()});
+	figure.append(row);
+	$('#note_<%= note.id %> i').hover(function(){
+		$('#note_<%= note.id %>').addClass('active');
+		if(<%= note.x %> > .5){
+			$('#note_<%= note.id %> .hover-title').css({right: '0px'});
+			$('#note_<%= note.id %> .hover-description').css({right: '0px'});
+		}
+	}, function(){
+		$('#note_<%= note.id %>').removeClass('active');
+	})
+<% end %>
+}, 100);
+
 </script>
