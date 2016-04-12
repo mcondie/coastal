@@ -191,3 +191,19 @@ table td {
 .image-post figure{
 	position: relative;
 }
+
+.fixed-height img{
+	height: calc(100vh - 262px);
+	margin: 0 auto;
+	width: calc((100vh - 262px) * 1.78);
+}
+
+.fixed-height figure, .fixed-height-cat figure{
+	text-align: center;
+}
+
+.fixed-height-cat img{
+	height: calc(100vh - 334px);
+	margin: 0 auto;
+	width: calc((100vh - 334px) * 1.78);
+}

@@ -2,12 +2,12 @@
 	<div class="row fullWidth">
 		<div class="small-12 large-12 columns noPadding control-container" role="main">
 
-			<div class="slides">
+			<div class="slides fixed-height">
 				<% @photos.each do |photo| %>
 				<div class="image-post">
 					<article >
 						<figure>
-							<a href="/photo/<%= photo.id %>"><%= image_tag photo.image.url %>
+							<a href="/photo/<%= photo.id %>"><%= image_tag photo.image.url(:large) %>
 							</a>
 						</figure>
 						<h2 class="image-title"><a href="/photo/<%= photo.id %>"><%= photo.title %></a></h2>
