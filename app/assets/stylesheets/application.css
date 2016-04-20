@@ -18,6 +18,15 @@
 	text-align: center;
 }
 
+.category-header h1{
+	margin-top:-10px;
+	margin-bottom:-10px;
+}
+
+.category-header p{
+	margin-bottom: 0px;
+}
+
 .category-name{
 
 }
@@ -176,6 +185,7 @@
 
 #photos-comp .slick-next:before, #photos-comp .slick-prev:before{
 	color: #359683;
+	display:none;
 }
 
 .contact-container{
@@ -192,6 +202,10 @@ table td {
 	position: relative;
 }
 
+.image-post i {
+	font-size: 36px;
+}
+
 .fixed-height img{
 	height: calc(100vh - 262px);
 	margin: 0 auto;
@@ -206,4 +220,8 @@ table td {
 	height: calc(100vh - 334px);
 	margin: 0 auto;
 	width: calc((100vh - 334px) * 1.78);
+}
+
+body{
+	min-width: 768px;
 }

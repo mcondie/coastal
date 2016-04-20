@@ -2,6 +2,7 @@
 	<div class="row">
 		<div class="category-header">
 			<h1 class="category-name"><%=@category.name%></h1>
+			<p>Click on an image for more details</p>
 		</div>
 	</div>
 </div>
@@ -15,7 +16,7 @@
 				<div class="image-post">
 					<article >
 						<figure>
-							<a href="/photo/<%= photo.id %>"><%= image_tag photo.image.url %>
+							<a href="/photo/<%= photo.id %>"><%= image_tag photo.image.url(:large) %>
 							</a>
 						</figure>
 						<h2 class="image-title"><a href="/photo/<%= photo.id %>"><%= photo.title %></a></h2>
